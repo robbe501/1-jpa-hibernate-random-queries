@@ -1,12 +1,12 @@
 package com.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.Actor;
 import com.entity.Film;
 import com.provider.ProviderManager;
 import com.vo.ActorVO;
+import com.vo.FilmVO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -34,39 +34,39 @@ public class FilmActorDAOImpl implements FilmActorDAO {
 	}
 
 	@Override
-	public List<Film> getFilmsByNumActors(Integer numActor) {
+	public List<FilmVO> getFilmsByNumActors(Integer numActor) {
 		initRoutine();
 
-		List<Film> toReturn = new ArrayList<Film>();
+//		List<Film> toReturn = new ArrayList<Film>();
 
-		List<Object[]> results = em.createNamedQuery("Film.getFilmsByNumActors", Object[].class)
+		List<FilmVO> results = em.createNamedQuery("Film.getFilmsByNumActors", FilmVO.class)
 				.setParameter("numActs", numActor).getResultList();
 
-		for (Object[] result : results) {
-			String title = (String) result[0];
-			toReturn.add(new Film(title));
-		}
+//		for (Object[] result : results) {
+//			String title = (String) result[0];
+//			toReturn.add(new Film(title));
+//		}
 		closingRoutine();
 
-		return toReturn;
+		return results;
 	}
 
 	@Override
-	public List<Film> getFilmsByActor(String firstName, String lastName) {
+	public List<FilmVO> getFilmsByActor(String firstName, String lastName) {
 		initRoutine();
 
-		List<Film> toReturn = new ArrayList<Film>();
+//		List<Film> toReturn = new ArrayList<Film>();
 
-		List<Object[]> results = em.createNamedQuery("Film.getFilmsByActor", Object[].class)
+		List<FilmVO> results = em.createNamedQuery("Film.getFilmsByActor", FilmVO.class)
 				.setParameter("firstName", firstName).setParameter("lastName", lastName).getResultList();
 
-		for (Object[] result : results) {
-			String title = (String) result[0];
-			toReturn.add(new Film(title));
-		}
+//		for (Object[] result : results) {
+//			String title = (String) result[0];
+//			toReturn.add(new Film(title));
+//		}
 		closingRoutine();
 
-		return toReturn;
+		return results;
 	}
 
 	@Override

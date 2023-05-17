@@ -30,9 +30,9 @@ import jakarta.persistence.TemporalType;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "Film.getNumFilmsPerOneCategory", query = "SELECT new com.vo.CategoryVO(c.name, COUNT(f.filmId)) FROM Film f JOIN f.categories c WHERE c.name = :categoryName GROUP BY c.categoryId"),
-		@NamedQuery(name = "Film.getFilmsByCategoryDesc", query = "SELECT f.title FROM Film f JOIN f.categories c WHERE c.name = :categoryName ORDER BY f.title DESC"),
-		@NamedQuery(name = "Film.getFilmsByNumActors", query = "SELECT f.title, COUNT(a.actorId) FROM Film f JOIN f.actors a GROUP BY f.title HAVING COUNT(a.actorId) = :numActs"),
-		@NamedQuery(name = "Film.getFilmsByActor", query = "SELECT f.title FROM Film f JOIN f.actors a WHERE a.firstName = :firstName AND a.lastName = :lastName") })
+		@NamedQuery(name = "Film.getFilmsByCategoryDesc", query = "SELECT new com.vo.FilmVO(f.title, c.name) FROM Film f JOIN f.categories c WHERE c.name = :categoryName ORDER BY f.title DESC"),
+		@NamedQuery(name = "Film.getFilmsByNumActors", query = "SELECT new com.vo.FilmVO(f.title, COUNT(a.actorId)) FROM Film f JOIN f.actors a GROUP BY f.title HAVING COUNT(a.actorId) = :numActs"),
+		@NamedQuery(name = "Film.getFilmsByActor", query = "SELECT new com.vo.FilmVO(f.title, a.firstName, a.lastName) FROM Film f JOIN f.actors a WHERE a.firstName = :firstName AND a.lastName = :lastName") })
 public class Film implements Serializable {
 	private static final long serialVersionUID = 1L;
 

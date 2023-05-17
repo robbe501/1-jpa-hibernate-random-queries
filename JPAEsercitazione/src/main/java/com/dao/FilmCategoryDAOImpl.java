@@ -1,11 +1,10 @@
 package com.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.entity.Film;
 import com.provider.ProviderManager;
 import com.vo.CategoryVO;
+import com.vo.FilmVO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -35,21 +34,22 @@ public class FilmCategoryDAOImpl implements FilmCategoryDAO {
 	}
 
 	@Override
-	public List<Film> getFilmsByCategoryDesc(String categoryName) {
+	public List<FilmVO> getFilmsByCategoryDesc(String categoryName) {
 		initRoutine();
 
-		List<Film> toReturn = new ArrayList<Film>();
+//		List<Film> toReturn = new ArrayList<Film>();
 
-		List<Object[]> results = em.createNamedQuery("Film.getFilmsByCategoryDesc", Object[].class)
+		List<FilmVO> results = em.createNamedQuery("Film.getFilmsByCategoryDesc", FilmVO.class)
 				.setParameter("categoryName", categoryName).getResultList();
 
-		for (Object[] result : results) {
-			String title = (String) result[0];
-			toReturn.add(new Film(title));
-		}
+//		for (Object[] result : results) {
+//			String title = (String) result[0];
+//			toReturn.add(new Film(title));
+//		}
+
 		closingRoutine();
 
-		return toReturn;
+		return results;
 	}
 
 	private void closingRoutine() {

@@ -18,6 +18,22 @@ public class FilmVO implements Serializable {
 		this.filmCategory = filmCategory;
 	}
 
+	public FilmVO(String title, String filmCategory) {
+		this.title = title;
+		this.filmCategory = filmCategory;
+	}
+
+	public FilmVO(String title, Long count) {
+		this.title = title;
+		this.count = count;
+	}
+
+	public FilmVO(String title, String actorFirstName, String actorLastName) {
+		this.title = title;
+		this.actorFirstName = actorFirstName;
+		this.actorLastName = actorLastName;
+	}
+
 	public String getTitle() {
 		return title;
 	}

@@ -2,6 +2,9 @@ package com.main;
 
 import java.util.logging.Level;
 
+import com.dao.FilmActorDAO;
+import com.dao.FilmActorDAOImpl;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -31,8 +34,8 @@ public class Main {
 //		FilmCategoryDAO filmCategoryDAO = new FilmCategoryDAOImpl();
 //
 //		String categoryToSearch = "Action";
-//		List<Film> films = filmCategoryDAO.getFilmsByCategoryDesc(categoryToSearch);
-//		films.forEach(f -> System.out.println(categoryToSearch + " - " + f.getTitle()));
+//		List<FilmVO> films = filmCategoryDAO.getFilmsByCategoryDesc(categoryToSearch);
+//		films.forEach(System.out::println);
 
 //		4. Tutti gli attori, in ordine crescente per nome and cognome, che hanno recitato in un determinato film
 
@@ -69,16 +72,14 @@ public class Main {
 
 //		FilmActorDAO filmActorDAO = new FilmActorDAOImpl();
 //		Integer numActors = 10;
-//		filmActorDAO.getFilmsByNumActors(numActors)
-//				.forEach(a -> System.out.println("Actors: " + numActors + " - Title: " + a.getTitle()));
+//		filmActorDAO.getFilmsByNumActors(numActors).forEach(System.out::println);
 
 //		8. Elenco di tutti i film in cui ha recitato l'attore x 
 
-//		FilmActorDAO filmActorDAO = new FilmActorDAOImpl();
-//		String firstName = "PENELOPE";
-//		String lastName = "GUINESS";
-//		filmActorDAO.getFilmsByActor(firstName, lastName).forEach(a -> System.out
-//				.println("First Name: " + firstName + " Last Name: " + lastName + " - Title: " + a.getTitle()));
+		FilmActorDAO filmActorDAO = new FilmActorDAOImpl();
+		String firstName = "PENELOPE";
+		String lastName = "GUINESS";
+		filmActorDAO.getFilmsByActor(firstName, lastName).forEach(System.out::println);
 
 //		9. Store che hanno customers residenti in un determinato country
 
