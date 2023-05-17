@@ -1,9 +1,9 @@
 package com.dao;
 
-import java.util.Map;
+import java.util.List;
 
-import com.entity.Address;
+import com.vo.AddressVO;
 
 public interface AddressStaffStoreDAO {
-	public Map<Address, Long> getNumStaffPerStore();
+	public List<AddressVO> getNumStaffPerStore();
 }

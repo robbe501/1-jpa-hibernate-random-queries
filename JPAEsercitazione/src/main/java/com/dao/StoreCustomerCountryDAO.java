@@ -2,8 +2,8 @@ package com.dao;
 
 import java.util.List;
 
-import com.entity.Store;
+import com.vo.StoreVO;
 
 public interface StoreCustomerCountryDAO {
-	public List<Store> getStorePerCustomerInCountry(String country);
+	public List<StoreVO> getStorePerCustomerInCountry(String country);
 }

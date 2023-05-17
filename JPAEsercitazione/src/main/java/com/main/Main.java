@@ -1,9 +1,11 @@
 package com.main;
 
+import java.util.List;
 import java.util.logging.Level;
 
-import com.dao.FilmActorDAO;
-import com.dao.FilmActorDAOImpl;
+import com.dao.StoreCustomerCountryDAO;
+import com.dao.StoreCustomerCountryDAOImpl;
+import com.vo.StoreVO;
 
 public class Main {
 
@@ -15,11 +17,9 @@ public class Main {
 //		
 //		AddressStaffStoreDAO dao = new AddressStaffStoreDAOImpl();
 //
-//		Map<Address, Long> staffPerStore = dao.getNumStaffPerStore();
+//		List<AddressVO> staffPerStore = dao.getNumStaffPerStore();
 //
-//		for (Address a : staffPerStore.keySet()) {
-//			System.out.println(a.getAddress() + " - " + staffPerStore.get(a));
-//		}
+//		staffPerStore.forEach(System.out::println);
 
 //		2. Quanti film sono di una certa categoria (//)
 //				
@@ -76,18 +76,18 @@ public class Main {
 
 //		8. Elenco di tutti i film in cui ha recitato l'attore x 
 
-		FilmActorDAO filmActorDAO = new FilmActorDAOImpl();
-		String firstName = "PENELOPE";
-		String lastName = "GUINESS";
-		filmActorDAO.getFilmsByActor(firstName, lastName).forEach(System.out::println);
+//		FilmActorDAO filmActorDAO = new FilmActorDAOImpl();
+//		String firstName = "PENELOPE";
+//		String lastName = "GUINESS";
+//		filmActorDAO.getFilmsByActor(firstName, lastName).forEach(System.out::println);
 
 //		9. Store che hanno customers residenti in un determinato country
 
-//		StoreCustomerCountryDAO storeCustomerCountryDAO = new StoreCustomerCountryDAOImpl();
-//		String countryToSearch = "United States";
-//		List<Store> stores = storeCustomerCountryDAO.getStorePerCustomerInCountry(countryToSearch);
-//
-//		stores.forEach(s -> System.out.println(s.getStoreId() + " - " + countryToSearch));
+		StoreCustomerCountryDAO storeCustomerCountryDAO = new StoreCustomerCountryDAOImpl();
+		String countryToSearch = "United States";
+		List<StoreVO> stores = storeCustomerCountryDAO.getStorePerCustomerInCountry(countryToSearch);
+
+		stores.forEach(System.out::println);
 
 //		10. Nome, cognome e pagamento complessivo di un determinato customer
 //		

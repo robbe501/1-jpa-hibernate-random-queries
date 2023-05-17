@@ -21,8 +21,8 @@ import jakarta.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "Store.getNumStaffPerStore", query = "SELECT a.address, COUNT(st.firstName) FROM Store s JOIN s.staffs st JOIN s.address a GROUP BY a.address"),
-		@NamedQuery(name = "Store.getStorePerCustomerInCountry", query = "SELECT s.storeId FROM Store s JOIN s.customers c JOIN c.address a JOIN a.city ci JOIN ci.country co WHERE co.country = :country"), })
+		@NamedQuery(name = "Store.getNumStaffPerStore", query = "SELECT new com.vo.AddressVO(a.address, COUNT(st.firstName)) FROM Store s JOIN s.staffs st JOIN s.address a GROUP BY a.address"),
+		@NamedQuery(name = "Store.getStorePerCustomerInCountry", query = "SELECT new com.vo.StoreVO(s.storeId, co.country) FROM Store s JOIN s.customers c JOIN c.address a JOIN a.city ci JOIN ci.country co WHERE co.country = :country"), })
 
 public class Store implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -1,11 +1,9 @@
 package com.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import com.entity.Address;
 import com.provider.ProviderManager;
+import com.vo.AddressVO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -16,24 +14,24 @@ public class AddressStaffStoreDAOImpl implements AddressStaffStoreDAO {
 	private EntityManagerFactory emf;
 
 	@Override
-	public Map<Address, Long> getNumStaffPerStore() {
+	public List<AddressVO> getNumStaffPerStore() {
 		initRoutine();
 
-		Map<Address, Long> toReturn = new HashMap<Address, Long>();
+//		Map<Address, Long> toReturn = new HashMap<Address, Long>();
 
 //		String jpql = "SELECT a.address, COUNT(st.firstName) FROM Store s JOIN s.staffs st JOIN s.address a GROUP BY a.address";
 
-		List<Object[]> results = em.createNamedQuery("Store.getNumStaffPerStore", Object[].class).getResultList();
+		List<AddressVO> results = em.createNamedQuery("Store.getNumStaffPerStore", AddressVO.class).getResultList();
 
-		for (Object[] result : results) {
-			String address = (String) result[0];
-			Long nStaff = (Long) result[1];
-
-			toReturn.put(new Address(address), nStaff);
-		}
+//		for (Object[] result : results) {
+//			String address = (String) result[0];
+//			Long nStaff = (Long) result[1];
+//
+//			toReturn.put(new Address(address), nStaff);
+//		}
 		closingRoutine();
 
-		return toReturn;
+		return results;
 	}
 
 	private void closingRoutine() {
